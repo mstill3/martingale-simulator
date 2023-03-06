@@ -112,11 +112,19 @@ func (simulator Simulator) Run() {
 	averageAmountLost := totalAmountLost / float64(simulator.numGames)
 	rateSuccess := float64(numGamesWon+numGamesEven) / float64(simulator.numGames) * 100
 
+	//a := averageAmountWon / simulator.singleBetAmount / float64(simulator.numRounds)
+	//b := averageAmountLost / simulator.singleBetAmount / float64(simulator.numRounds)
+	d := averageAmountLost / averageAmountWon
+
 	// Output overall game statistics to console
+	fmt.Println("\nSTATISTICS:")
 	fmt.Println(fmt.Sprintf("- Number Games Won: %v", numGamesWon))
 	fmt.Println(fmt.Sprintf("- Average Amount Won: $%v", averageAmountWon))
 	fmt.Println(fmt.Sprintf("- Number Games Break Even: %v", numGamesEven))
 	fmt.Println(fmt.Sprintf("- Number Games Lost: %v", numGamesLost))
 	fmt.Println(fmt.Sprintf("- Average Amount Lost: $%v", averageAmountLost))
 	fmt.Println(fmt.Sprintf("- Rate of Success: %v%%", rateSuccess))
+	//fmt.Println(fmt.Sprintf("- Win Amount to Bet Multiplier Rate: %v", a))
+	//fmt.Println(fmt.Sprintf("- Lose Amount to Bet Multiplier Rate: %v", b))
+	fmt.Println(fmt.Sprintf("- Risk Amount Rate: $1 dollar won - $%v dollar lost", d))
 }
